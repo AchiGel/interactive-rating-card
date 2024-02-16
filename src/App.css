@@ -112,7 +112,7 @@ body {
   color: #fff;
 }
 
-.points-buttons .points-button:focus {
+.points-buttons .clicked {
   background-color: #fc7614;
   color: #fff;
 }

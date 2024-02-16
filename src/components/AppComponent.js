@@ -1,8 +1,21 @@
+import { useState } from "react";
+
 function AppComponent({
   handleFormSubmited,
   handleRatingClicked,
   selectedRating,
 }) {
+  const [clickedButton, setClickedButton] = useState(null);
+
+  const handleClick = (rating) => {
+    if (clickedButton === rating) {
+      setClickedButton(null);
+    } else {
+      setClickedButton(rating);
+    }
+    handleRatingClicked(rating);
+  };
+
   return (
     <div className="App">
       <div className="rating-card">
@@ -36,8 +49,13 @@ function AppComponent({
                   onClick={(e) => {
                     e.preventDefault();
                     handleRatingClicked(rating);
+                    handleClick(rating);
                   }}
-                  className="points-button"
+                  className={
+                    clickedButton === rating
+                      ? "points-button clicked"
+                      : "points-button"
+                  }
                 >
                   {rating}
                 </button>
